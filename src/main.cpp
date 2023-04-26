@@ -109,12 +109,6 @@ bool loadmedia(){
     if(!back.loadFromFile("res/back1.png", grender)){
         return false;
     }
-    if(!resume.loadFromFile("res/button_resume.png",grender)){
-        return false;
-    }
-    if(!pause.loadFromFile("res/button_pause.png", grender)){
-        return false;
-    }
     if(!about.loadFromFile("res/menu.png", grender)){
         return false;
     }
