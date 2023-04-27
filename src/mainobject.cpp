@@ -9,8 +9,7 @@ MainObject :: ~MainObject(){
 	free();
 }
 
-void MainObject :: handleInput(BaseObject resume, SDL_Event e, SDL_Renderer* screen, Mix_Chunk* bullet_sound[3]){
-	resume.loadFromFile("res/button_resume.png", screen);
+void MainObject :: handleInput(SDL_Event e, SDL_Renderer* screen, Mix_Chunk* bullet_sound[3]){
     if(e.type == SDL_MOUSEBUTTONDOWN){
 		if(e.button.button == SDL_BUTTON_LEFT){
 				BulletObject* vu = new BulletObject();

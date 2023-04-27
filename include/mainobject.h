@@ -9,7 +9,7 @@ class MainObject : public BaseObject{
 	public:
 	MainObject();
 	~MainObject();
-	void handleInput(BaseObject resume, SDL_Event e, SDL_Renderer* screen, Mix_Chunk* bullet_sound[3]);
+	void handleInput(SDL_Event e, SDL_Renderer* screen, Mix_Chunk* bullet_sound[3]);
 	void handleBullet(SDL_Renderer* des);
 	void set_v_bullet_list(vector<BulletObject*> v){
 		v_bullet_list = v;

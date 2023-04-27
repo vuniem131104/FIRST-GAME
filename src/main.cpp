@@ -32,8 +32,6 @@ BulletObject bulletobject;
 ThreatObject threatobject[6];
 BaseObject about;
 BaseObject heart[3];
-BaseObject pause;
-BaseObject resume;
 BaseObject back;
 BaseObject sound_on;
 BaseObject music_on;
@@ -118,7 +116,7 @@ bool loadmedia(){
     if(!boss.loadFromFile("res/boss.png", grender)){
         return false;
     }
-    if(!mainobject.loadFromFile("res/a21.png", grender)){
+    if(!mainobject.loadFromFile("res/green_plane.png", grender)){
         return false;
     }
     if(!bulletobject.loadFromFile("res/laser.png", grender)){
@@ -193,6 +191,10 @@ int main(int argc, char *argv[])
                 SDL_Delay(3000);
                 if(load1)
                 Mix_PlayChannel(0, music, 0);
+                ThreatObject :: dem = 0;
+                ThreatObject :: dem_coin = 0;
+                mainobject.setRect(0, -10);
+                menu.free();
             }else if(res_menu == 2){
                 bool thoat = false;
                 SDL_Event m_e;
@@ -405,7 +407,7 @@ int main(int argc, char *argv[])
             
             BulletObject* p[tong_threat + 1];
 
-
+           
             //time text
 
 
@@ -452,8 +454,8 @@ int main(int argc, char *argv[])
             bool threat = Exp_threat.loadFromFile("res/exp_main.png", grender);
             Explosion Exp_main;
             bool mainn = Exp_main.loadFromFile("res/exp.png", grender);
-            if(threat == true) Exp_threat.setclip();
-            if(mainn == true) Exp_main.setclip();
+            if(threat ) Exp_threat.setclip();
+            if(mainn ) Exp_main.setclip();
 
 			while(!quit){
                 fps_timer.start();
@@ -482,13 +484,13 @@ int main(int argc, char *argv[])
 						quit = true;
                     }
                     if(load2)
-                    mainobject.handleInput(resume, e, grender, danban);
-                    else mainobject.handleInput(resume, e, grender, danbann);
+                    mainobject.handleInput(e, grender, danban);
+                    else mainobject.handleInput(e, grender, danbann);
 				}
 				SDL_SetRenderDrawColor(grender, 0xFF, 0xFF, 0xFF, 0xFF);
 				SDL_RenderClear(grender);
-                if(is_move == true){
-                    apply -= 2;
+                if(is_move ){
+                    apply -= 50;
                     background.setRect(apply, 0);
                     background.render(grender, NULL);
                     if(apply <= -BG_WIDTH + screen_width){
@@ -518,7 +520,7 @@ int main(int argc, char *argv[])
                     // xử lý va chạm giữa BOSS và MainObject
 
                     bool collision = COMMONF :: checkCollision(mainobject.getRect(), boss.getRect());
-                    if(collision == true){
+                    if(collision ){
                         for(int ex = 0; ex < 4; ex++){
                             int x_posss = mainobject.getRect().x - 50;
                             int y_posss = mainobject.getRect().y - 50;
@@ -547,10 +549,10 @@ int main(int argc, char *argv[])
                     int Getframe_w = Exp_threat.getW();
                     int Getframe_h = Exp_threat.getH();
                     vector<BulletObject*> hi = mainobject.get_v_bullet_list();
-                    for(unsigned int j1 = 0 ; j1 < hi.size(); j1++){
-                        BulletObject* dann = hi.at(j1);
+                    for(int j1 = 0 ; j1 < hi.size(); j1++){
+                        BulletObject* dann = hi[j1];
                         bool collision = COMMONF :: checkCollision(dann->getRect(), boss.getRect());
-                        if(collision == true){
+                        if(collision){
                             blood--;
                             if(blood <= 0){
                                 boss.free();
@@ -592,6 +594,8 @@ int main(int argc, char *argv[])
                                 Exp_threat.showEXP(grender);
                             }
                             dann->free();
+                            hi.clear();
+                            break;
                         }
                     }
 
@@ -603,7 +607,7 @@ int main(int argc, char *argv[])
                     for(unsigned int i1 = 0; i1 < vu.size(); i1++){
                         BulletObject* pp = vu.at(i1);
                         bool collision = COMMONF :: checkCollision(pp->getRect(), mainobject.getRect());
-                        if(collision == true){
+                        if(collision ){
                             for(int exp = 0; exp < 4; exp++){
                                 int xpos = pp->getRect().x - getframe_w * 0.5;
                                 int ypos = pp->getRect().y -getframe_h * 0.5;
@@ -677,10 +681,6 @@ int main(int argc, char *argv[])
                
                 threatobject[5].makebullet(grender, screen_width, screen_height);
                 
-
-                // load nút home lên
-                // pause.setRect(screen_width - 50, 60);
-                // pause.render(grender, NULL);
                 // xử lý va chạm giữa mainobject và threatobject
                 // resume.render(grender, NULL);
                 int get_frame_widthh = Exp_main.getW();
@@ -692,7 +692,7 @@ int main(int argc, char *argv[])
                     p_threat->makeBullet(grender, screen_width, screen_height);
 
                     bool is_col = COMMONF :: checkCollision(mainobject.getRect(), p_threat->getRect());
-                    if(is_col == true){
+                    if(is_col ){
                         for(int ex = 0; ex < 4; ex++){
                             int x_poss = mainobject.getRect().x - get_frame_widthh * 0.5;
                             int y_poss = mainobject.getRect().y - get_frame_heightt * 0.5;
@@ -732,7 +732,7 @@ int main(int argc, char *argv[])
                             for(int k = 0; k < tong_threat; k++){
                                 ThreatObject* p_threat = (threatobject + k);
                                 bool res = COMMONF :: checkCollision(p->getRect(), p_threat->getRect());
-                                if(res == true){
+                                if(res ){
                                     mark_value++;
                                     if(mark_value >= 30){
                                         if(so_luong_mang < 3){
@@ -749,8 +749,9 @@ int main(int argc, char *argv[])
                                         Mix_PlayChannel(-1, vuno, 0);
                                         Exp_threat.showEXP(grender);
                                     }
-                                    p_threat->setRect(screen_width, 55 + rand() % 400);
                                     p->free();
+                                    p_threat->setRect(screen_width, 55 + rand() % 400); 
+                                    break;
                                 }
                             }
                         }
@@ -766,7 +767,7 @@ int main(int argc, char *argv[])
                         for(unsigned int i1 = 0; i1 < vu.size(); i1++){
                             BulletObject* pp = vu.at(i1);
                             bool collision = COMMONF :: checkCollision(pp->getRect(), mainobject.getRect());
-                            if(collision == true){
+                            if(collision ){
                                 for(int exp = 0; exp < 4; exp++){
                                     int xpos = pp->getRect().x - get_frame_w * 0.5;
                                     int ypos = pp->getRect().y -get_frame_h * 0.5;
@@ -962,8 +963,12 @@ int main(int argc, char *argv[])
         }  
     }
     if(g){
-        SDL_DestroyWindow(gwindow);
         SDL_DestroyRenderer(grender);
+        grender = NULL;
+        SDL_DestroyWindow(gwindow);
+        gwindow = NULL;
+        IMG_Quit();
+
         goto aa;
     }
     close();
