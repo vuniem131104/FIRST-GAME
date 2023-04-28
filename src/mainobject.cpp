@@ -20,7 +20,7 @@ void MainObject :: handleInput(SDL_Event e, SDL_Renderer* screen, Mix_Chunk* bul
 				vu->set_is_move(true);
 				v_bullet_list.push_back(vu);
 				Mix_PlayChannel(-1, bullet_sound[0], 0);
-		}else if(e.button.button == SDL_BUTTON_RIGHT){
+		}else if(e.button.button == SDL_BUTTON_RIGHT && this->getX() >= 0 && this->getY() > -10){
 			BulletObject* vu = new BulletObject();
 			vu->set_x(28);
 			vu->loadFromFile("res/bl4.png",screen);
