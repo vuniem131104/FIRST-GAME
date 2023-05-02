@@ -53,10 +53,3 @@ void BulletObject :: handlemove_right_to_bottomleft(int speed){
         is_move = false;
     }
 }
-
-void BulletObject :: handlemove_down(int speed){
-    rect_.y += speed;
-    if(rect_.y > screen_height){
-        is_move = false;
-    }
-}

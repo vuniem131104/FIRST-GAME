@@ -66,7 +66,6 @@ void ThreatObject :: makebullet(SDL_Renderer* screen, int x_b, int y_b){
         if(p_bullet){
             if(p_bullet->get_is_move() == true){
                 p_bullet->render(screen, NULL);
-                p_bullet->handlemove_down(8);
             }else{
                 p_bullet->set_is_move(true);
                 p_bullet->setRect(rect_.x - 500 + rand()%1000, rect_.y);

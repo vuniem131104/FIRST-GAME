@@ -13,7 +13,7 @@ Explosion :: ~Explosion(){
 bool Explosion :: loadFromFile(string path, SDL_Renderer* screen){
     bool res = BaseObject :: loadFromFile(path, screen);
     if(res){
-        frame_width = rect_.w / 8;
+        frame_width = rect_.w / 4;
         frame_height = rect_.h;
     }
     return res;

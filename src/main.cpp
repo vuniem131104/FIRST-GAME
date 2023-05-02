@@ -483,6 +483,16 @@ int main(int argc, char *argv[])
 					if(e.type == SDL_QUIT){
 						quit = true;
                     }
+                    // else if(e.type == SDL_MOUSEBUTTONDOWN){
+                    //     if(e.button.button == SDL_BUTTON_LEFT){
+                    //         if(e.button.x > 1200 && e.button.y < 55){
+                    //             fps_timer.paused();
+                    //             SDL_Delay(20000);
+                    //         }else if(e.button.x <1200 && e.button.y > 55){
+                    //             fps_timer.start();
+                    //         }
+                    //     }
+                    // }
                     if(load2)
                     mainobject.handleInput(e, grender, danban);
                     else mainobject.handleInput(e, grender, danbann);

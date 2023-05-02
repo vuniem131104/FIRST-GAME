@@ -27,7 +27,7 @@ void Boss :: dan_ban(SDL_Renderer* screen, int x_b, int y_b){
                 p_bullet->handlemove_right_to_left(20);
             }else{
                 p_bullet->set_is_move(true);
-                p_bullet->setRect(rect_.x + 20, 400 - rand() % 150);
+                p_bullet->setRect(rect_.x - 30, 400 - rand() % 150);
             }
         }
     }
@@ -43,7 +43,7 @@ void Boss :: dan_ban1(SDL_Renderer* screen, int x_b, int y_b){
                 p_bullet->handlemove_right_to_topleft(20);
             }else{
                 p_bullet->set_is_move(true);
-                p_bullet->setRect(rect_.x + 20, 400 - rand() % 150);
+                p_bullet->setRect(rect_.x - 30, 400 - rand() % 150);
             }
         }
     }
@@ -58,7 +58,7 @@ void Boss :: dan_ban2(SDL_Renderer* screen, int x_b, int y_b){
                 p_bullet->handlemove_right_to_bottomleft(20);
             }else{
                 p_bullet->set_is_move(true);
-                p_bullet->setRect(rect_.x + 20, 400 - rand() % 150);
+                p_bullet->setRect(rect_.x - 30, 400 - rand() % 150);
             }
         }
     }

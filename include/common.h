@@ -12,8 +12,8 @@ using namespace std;
 const int frame_per_second = 25;
 const int screen_width = 1280;
 const int screen_height = 670;
-const int BG_WIDTH = 4800;
-const int BG_HEIGHT = 600;
+const int BG_WIDTH = 6000;
+const int BG_HEIGHT = 700;
 const int BOSS_WIDTH = 180;
 const int BOSS_HEIGHT = 250;
 namespace COMMONF{

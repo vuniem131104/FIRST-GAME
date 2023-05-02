@@ -67,7 +67,7 @@ if(right_b > left_a && right_b < right_a)
         return true;
     }
 }
- 
+
 if(right_b > left_a && right_b < right_a)
 {
     if (bottom_b > top_a && bottom_b < bottom_a)
