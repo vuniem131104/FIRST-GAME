@@ -311,7 +311,8 @@ int main(int argc, char *argv[])
                                     tich = level3;
                                     tich.y += 70;
                                     tich.w = 100;
-                                }else if(m_e.button.x >= 20 && m_e.button.x <= 80 && m_e.button.y >= 505 && m_e.button.y <= 550){
+                                }
+                                if(m_e.button.x >= 20 && m_e.button.x <= 80 && m_e.button.y >= 505 && m_e.button.y <= 550){
                                     mainobject.loadFromFile("res/green_plane.png", grender);
                                     tich1 = t1;
                                     tich1.y += 40;
@@ -500,7 +501,7 @@ int main(int argc, char *argv[])
 				SDL_SetRenderDrawColor(grender, 0xFF, 0xFF, 0xFF, 0xFF);
 				SDL_RenderClear(grender);
                 if(is_move ){
-                    apply -= 2;
+                    apply -= 50;
                     background.setRect(apply, 0);
                     background.render(grender, NULL);
                     if(apply <= -BG_WIDTH + screen_width){
