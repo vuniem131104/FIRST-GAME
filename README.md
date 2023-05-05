@@ -25,7 +25,7 @@ terminal -> run task -> C++:Build Debug and Run (g++)
 
 ## Options and Settings game
 
-![setting](https://user-images.githubusercontent.com/124224840/234488295-4ddf190b-2a23-4140-9208-13f44636e307.jpg)
+![SharedScreenshot](https://user-images.githubusercontent.com/124224840/236388134-9a53a341-8928-41ce-aa4d-35b596024ede.jpg)
 
 ## Game play
 
