@@ -899,7 +899,7 @@ int main(int argc, char *argv[])
     SDL_Color colory = {255, 255, 255};
     SDL_Color colorn = {255, 255, 255};
     SDL_Color color2 = {0, 0, 0};
-    SDL_Window* window = SDL_CreateWindow("SDL2 Mouse Hover", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 670, SDL_WINDOW_SHOWN);
+    SDL_Window* window = SDL_CreateWindow("WAR_PLANE", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 670, SDL_WINDOW_SHOWN);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     SDL_Surface* imageSurface = NULL;
     SDL_Rect imageRect = {0, 0, 1300, 700};
