@@ -501,7 +501,7 @@ int main(int argc, char *argv[])
 				SDL_SetRenderDrawColor(grender, 0xFF, 0xFF, 0xFF, 0xFF);
 				SDL_RenderClear(grender);
                 if(is_move ){
-                    apply -= 50;
+                    apply -= 2;
                     background.setRect(apply, 0);
                     background.render(grender, NULL);
                     if(apply <= -BG_WIDTH + screen_width){
