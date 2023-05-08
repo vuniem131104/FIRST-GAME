@@ -71,7 +71,12 @@ Player: Press keys
        
        Click mouse to shoot the threats and boss
        
+       
+# Các nguồn tham khảo 
+Tham khảo lý thuyết tại https://lazyfoo.net/tutorials/SDL/
+
+Tham khảo một số video dạy về SDL2 tại phattrienphanmem123
+
+Hình ảnh, âm thanh, phông chữ lấy trên mạng
+
 # Thank for watching my first game
-
-
-
