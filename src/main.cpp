@@ -632,6 +632,7 @@ int main(int argc, char *argv[])
                             so_luong_mang--;
                             if(so_luong_mang > 0){
                                 pp->free();
+                                pp->set_is_move(false);
                                 mainobject.setRect(50, -10);
                                 mainobject.render(grender, NULL);
                                 BulletObject* p1 = new BulletObject();
@@ -639,6 +640,7 @@ int main(int argc, char *argv[])
                                 // boss.dan_ban(grender, screen_width, screen_height);
                             }else{
                                 pp->free();
+                                pp->set_is_move(false);
                                 mainobject.free();
                                 quit = true;
                             }
@@ -786,13 +788,13 @@ int main(int argc, char *argv[])
                                     Exp_threat.setFrame(exp);
                                     Exp_threat.setRect(xpos, ypos);
                                     if(load2)
-
                                     Mix_PlayChannel(-1, vuno, 0);
                                     Exp_threat.showEXP(grender);
                                 }
                                 so_luong_mang--;
                                 if(so_luong_mang > 0){
                                     pp->free();
+                                    pp->set_is_move(false);
                                     mainobject.setRect(50, -10);
                                     mainobject.render(grender, NULL);
                                     BulletObject* p1 = new BulletObject();
