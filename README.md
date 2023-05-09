@@ -71,12 +71,24 @@ Player: Press keys
        
        Click mouse to shoot the threats and boss
        
+Note:  15 coins or 30 scores will be exchanged one live for you, but if 20 threats pass will make you loss one live. And if you defeat the boss, you will win game.
        
-# Các nguồn tham khảo 
-Tham khảo lý thuyết tại https://lazyfoo.net/tutorials/SDL/
+# Reference material
 
-Tham khảo một số video dạy về SDL2 tại phattrienphanmem123
+Learn about theory at: https://lazyfoo.net/tutorials/SDL/
 
-Hình ảnh, âm thanh, phông chữ lấy trên mạng
+Learn about video tutorials at youtube channel phattrienphanmem123: https://www.youtube.com/@PhatTrienPhanMem123AZ
+
+Sound, music, image downloaded on the internet: https://mixkit.co/free-sound-effects/lose/ , .....
+
+# Feelings: 
+
+I feel very proud of myseft when finishing the first project about game. I'm very happy about that and i hope that my project game will bring to me good marks that are worthy of my effort
+
+Translation into VietNamese: 
+
+Tôi cảm thấy rất tự hào về bản thân khi hoàn thành dự án game đầu tiên. Tôi rất vui và mong rằng dự án game này sẽ mang lại cho tôi 1 số điểm tốt xứng đứng với công sức và nỗ lực của tôi.
 
 # Thank for watching my first game
+
+Hope this game will bring happiness to you when playing 
