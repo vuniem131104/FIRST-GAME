@@ -50,7 +50,7 @@ void ThreatObject :: makeBullet(SDL_Renderer* screen, int x_b, int y_b){
     }
 }
 
-void ThreatObject :: initbullet(BulletObject* p_b, SDL_Renderer* screen){
+void ThreatObject :: initcoin(BulletObject* p_b, SDL_Renderer* screen){
     if(p_b){
         bool res = p_b->loadFromFile("res/coin.png", screen);
         if(res){
@@ -60,12 +60,13 @@ void ThreatObject :: initbullet(BulletObject* p_b, SDL_Renderer* screen){
     }
 }
 
-void ThreatObject :: makebullet(SDL_Renderer* screen, int x_b, int y_b){
+void ThreatObject :: makecoin(SDL_Renderer* screen, int x_b, int y_b){
     for(unsigned int i = 0; i < p_bullet_list.size(); i++){
         BulletObject* p_bullet = p_bullet_list.at(i);
         if(p_bullet){
             if(p_bullet->get_is_move() == true){
                 p_bullet->render(screen, NULL);
+                p_bullet->hanldemove_top_to_down(10);
             }else{
                 p_bullet->set_is_move(true);
                 p_bullet->setRect(rect_.x - 500 + rand()%1000, rect_.y);

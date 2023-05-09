@@ -43,6 +43,7 @@ class BulletObject : public BaseObject{
     void handlemove_right_to_left(int speed);
 	void handlemove_right_to_topleft(int speed);
 	void handlemove_right_to_bottomleft(int speed);
+	void hanldemove_top_to_down(int speed);
 	private:
 	int x_val;
 	int y_val;

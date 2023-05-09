@@ -449,7 +449,7 @@ int main(int argc, char *argv[])
             int rand_x = rand()%400;
             p[tong_threat] = new BulletObject();
             threatobject[5].setRect(rand_x, -screen_height + 200);
-            threatobject[5].initbullet(p[tong_threat], grender);
+            threatobject[5].initcoin(p[tong_threat], grender);
            
             Explosion Exp_threat;
             bool threat = Exp_threat.loadFromFile("res/exp_main.png", grender);
@@ -484,16 +484,6 @@ int main(int argc, char *argv[])
 					if(e.type == SDL_QUIT){
 						quit = true;
                     }
-                    // else if(e.type == SDL_MOUSEBUTTONDOWN){
-                    //     if(e.button.button == SDL_BUTTON_LEFT){
-                    //         if(e.button.x > 1200 && e.button.y < 55){
-                    //             fps_timer.paused();
-                    //             SDL_Delay(20000);
-                    //         }else if(e.button.x <1200 && e.button.y > 55){
-                    //             fps_timer.start();
-                    //         }
-                    //     }
-                    // }
                     if(load2)
                     mainobject.handleInput(e, grender, danban);
                     else mainobject.handleInput(e, grender, danbann);
@@ -513,6 +503,9 @@ int main(int argc, char *argv[])
                     background.render(grender, NULL);
                     boss.render(grender, NULL);
                     boss.handle_move_boss();
+                    
+                    //đạn boss bay theo hướng người chơi
+
                     if(mainobject.getY() < boss.get_Y() + 150){
                         boss.dan_ban1(grender, screen_width, screen_height);
                         if(load2)
@@ -693,7 +686,7 @@ int main(int argc, char *argv[])
 
                 
                
-                threatobject[5].makebullet(grender, screen_width, screen_height);
+                threatobject[5].makecoin(grender, screen_width, screen_height);
                 
                 // xử lý va chạm giữa mainobject và threatobject
                 // resume.render(grender, NULL);

@@ -28,8 +28,8 @@ class ThreatObject : public BaseObject{
 	}
 	void initBullet(BulletObject* p_b, SDL_Renderer* screen);
 	void makeBullet(SDL_Renderer* screen, int x_b, int y_b);
-	void initbullet(BulletObject* p_b, SDL_Renderer* screen);
-	void makebullet(SDL_Renderer* screen, int x_b, int y_b);
+	void initcoin(BulletObject* p_b, SDL_Renderer* screen);
+	void makecoin(SDL_Renderer* screen, int x_b, int y_b);
 	static int dem;
 	static int dem_coin;
 	protected:
