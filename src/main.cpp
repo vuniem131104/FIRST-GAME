@@ -25,6 +25,7 @@ Mix_Chunk* end_game;
 Mix_Chunk* lose_game;
 Mix_Chunk* click;
 Mix_Chunk* coin;
+Mix_Chunk* increase;
 BaseObject background;
 Boss boss;
 MainObject mainobject;
@@ -79,9 +80,10 @@ bool init(){
         click = Mix_LoadWAV("audio/button_click_sound.wav");
         coin = Mix_LoadWAV("audio/coin.wav");
         rocket = Mix_LoadWAV("audio/rocket.wav");
+        increase = Mix_LoadWAV("audio/increase.wav");
         if(vuno == NULL || danban[0] == NULL || danban[1] == NULL || danban[2] == NULL 
         || start == NULL || music == NULL || button_click == NULL || reload == NULL 
-        || end_game == NULL || click == NULL || coin == NULL) return false;
+        || end_game == NULL || click == NULL || coin == NULL || increase == NULL) return false;
 	}
 	return success;
 }
@@ -171,6 +173,7 @@ int main(int argc, char *argv[])
     int nen = 101;
     Menu menu;
     bool win = false;
+    int speedx = 12, speedy = 10;
     if(!init()){
         cout << "SDL khong the khoi tao\n";
     }else{
@@ -311,8 +314,7 @@ int main(int argc, char *argv[])
                                     tich = level3;
                                     tich.y += 70;
                                     tich.w = 100;
-                                }
-                                if(m_e.button.x >= 20 && m_e.button.x <= 80 && m_e.button.y >= 505 && m_e.button.y <= 550){
+                                }else if(m_e.button.x >= 20 && m_e.button.x <= 80 && m_e.button.y >= 505 && m_e.button.y <= 550){
                                     mainobject.loadFromFile("res/green_plane.png", grender);
                                     tich1 = t1;
                                     tich1.y += 40;
@@ -463,21 +465,23 @@ int main(int argc, char *argv[])
 
                 const Uint8* state = SDL_GetKeyboardState(NULL);
 
+                // tốc độ di chuyển của player
+
                 if (state[SDL_SCANCODE_A]) {
-                    if(mainobject.getX() - 12 < 0) mainobject.getX() = 0;
-                    else mainobject.getX() -= 12;
+                    if(mainobject.getX() - speedx < 0) mainobject.getX() = 0;
+                    else mainobject.getX() -= speedx;
                 }
                 if (state[SDL_SCANCODE_D]) {
-                    if(mainobject.getX() + 112 > screen_width) mainobject.getX() = screen_width - 100;
-                    else mainobject.getX() += 12;
+                    if(mainobject.getX() + 100 + speedx > screen_width) mainobject.getX() = screen_width - 100;
+                    else mainobject.getX() += speedx;
                 }
                 if (state[SDL_SCANCODE_W]) {
-                    if(mainobject.getY() - 10 < 45) mainobject.getY() = 50;
-                    else mainobject.getY() -= 10;
+                    if(mainobject.getY() - speedy < 45) mainobject.getY() = 50;
+                    else mainobject.getY() -= speedy;
                 }
                 if (state[SDL_SCANCODE_S]) {
-                    if(mainobject.getY() + 10 > 400) mainobject.getY() = 400;
-                    else mainobject.getY() += 10;
+                    if(mainobject.getY() + speedy > 400) mainobject.getY() = 400;
+                    else mainobject.getY() += speedy;
                 }
 
 				while(SDL_PollEvent(&e) != 0){
@@ -521,6 +525,7 @@ int main(int argc, char *argv[])
                         if(load2)
                         Mix_PlayChannel(-1, rocket, 0);
                     }
+
                     // xử lý va chạm giữa BOSS và MainObject
 
                     bool collision = COMMONF :: checkCollision(mainobject.getRect(), boss.getRect());
@@ -641,7 +646,21 @@ int main(int argc, char *argv[])
                     }
                 }
 
-
+                if(mark_value >= 30){
+                        if(so_luong_mang < 3 && so_luong_mang >= 1){
+                            so_luong_mang++;
+                            if(load2) Mix_PlayChannel(-1, increase, 0);
+                            mark_value -= 30;
+                        }
+                        
+                    }
+                if(ThreatObject :: dem_coin >= 15){ 
+                    if(so_luong_mang < 3 && so_luong_mang >= 1){
+                        so_luong_mang++;
+                        if(load2) Mix_PlayChannel(-1, increase, 0);
+                        ThreatObject::dem_coin -= 15;
+                    }
+                }
 
                 if(ThreatObject :: dem >= 20){
                     so_luong_mang--;
@@ -744,6 +763,7 @@ int main(int argc, char *argv[])
                                     if(mark_value >= 30){
                                         if(so_luong_mang < 3){
                                         so_luong_mang++;
+                                        if(load2) Mix_PlayChannel(-1, increase, 0);
                                         mark_value -= 30;
                                         }
                                     }
@@ -818,6 +838,7 @@ int main(int argc, char *argv[])
                     ThreatObject::dem_coin -= 15;
                     if(so_luong_mang < 3 && so_luong_mang >= 1)
                     so_luong_mang++;
+                    if(load2) Mix_PlayChannel(-1, increase, 0);
                 }
                 
  
