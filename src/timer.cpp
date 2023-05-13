@@ -16,26 +16,6 @@ void Timer :: start(){
     start_tick_ = SDL_GetTicks();
 }
 
-void Timer :: stop(){
-    is_paused_ = false;
-    is_started_ = false;
-}
-
-void Timer :: paused(){
-    if(is_started_ == true && is_paused_ == false){
-        is_paused_ = true;
-        paused_tick_ = SDL_GetTicks() - start_tick_;
-    }
-}
-
-void Timer :: unpaused(){
-    if(is_paused_ == true){
-        is_paused_ = false;
-        start_tick_ = SDL_GetTicks() - paused_tick_;
-        paused_tick_ = 0;
-    }
-}
-
 int Timer :: get_ticks(){
     if(is_started_ == true){
         if(is_paused_ == true){
@@ -49,8 +29,4 @@ int Timer :: get_ticks(){
 
 bool Timer :: is_start(){
     return is_started_;
-}
-
-bool Timer :: is_paused(){
-    return is_paused_;
 }

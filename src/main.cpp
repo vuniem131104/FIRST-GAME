@@ -174,6 +174,7 @@ int main(int argc, char *argv[])
     Menu menu;
     bool win = false;
     int speedx = 12, speedy = 10;
+
     if(!init()){
         cout << "SDL khong the khoi tao\n";
     }else{
@@ -410,6 +411,7 @@ int main(int argc, char *argv[])
             
             BulletObject* p[tong_threat + 1];
 
+
            
             //time text
 
@@ -459,6 +461,9 @@ int main(int argc, char *argv[])
             bool mainn = Exp_main.loadFromFile("res/exp.png", grender);
             if(threat ) Exp_threat.setclip();
             if(mainn ) Exp_main.setclip();
+
+
+            // vòng lặp chính
 
 			while(!quit){
                 fps_timer.start();
